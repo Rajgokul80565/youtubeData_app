@@ -1,23 +1,21 @@
-import logo from './logo.svg';
 import './App.css';
+import Youtube from './component/Youtube';
+import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
+import VideoDetails from './component/VideoDetails'
+import DataContext from './Context/YoutubeContext';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <Router>
+    <Switch>
+    <DataContext>
+    <Route path="/" exact component={ Youtube} />
+    <Route exact path="/video" component={VideoDetails} />
+    <Route path = "/video/:id"  component={VideoDetails} />
+    </DataContext>
+    </Switch>
+    </Router>
     </div>
   );
 }
